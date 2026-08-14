@@ -1,20 +1,24 @@
 # [SUB-ISSUE] #01 — Implementação da Interface HTML de Status
 
-**Feature Pai:** `F01-status-page` | **Versão:** `v0` | **Label:** `antigravity:ready`
+**Feature Pai:** `F01` | **Versão:** `v0` | **Label:** `antigravity:ready`
+**Âncora Constitucional:** `governance/constitution.md`
 
 ---
 
-## 🎯 Escopo
-Implementar a interface `index.html` e `style.css` exibindo o status de desenvolvimento do repositório `Harness_teste`.
+## 🎯 Escopo da Sub-issue
+Implementar a interface autossuficiente `index.html` atendendo rigorosamente aos critérios da especificação `spec_v0.md`.
 
 ---
 
 ## 📊 Critérios MoSCoW
 
-### MUST HAVE (100%)
-- [x] **MUST-01:** Renderização dos cards de status dos 4 estágios do Harness.
-- [x] **MUST-02:** Responsividade mobile/desktop e tipografia limpa.
-- [x] **MUST-03:** Links de navegação para a especificação do Replicable Harness.
+### 🔴 MUST HAVE (100% Obrigatório para Merge)
+- [ ] **MUST-01:** Renderização em arquivo único `index.html` sem dependências remotas CDN.
+- [ ] **MUST-02:** Cabeçalho semântico com título e link para o Harness Central.
+- [ ] **MUST-03:** Cards de status dos estágios da arquitetura híbrida (Stage 1, 2 e 3).
+- [ ] **MUST-04:** Painel de métricas MoSCoW.
 
-### SHOULD HAVE
-- [x] **SHOULD-01:** Micro-interações e simulação interativa dos 3 retries de autoafinação com terminal interativo.
+### 🟡 SHOULD HAVE (Autoafinação)
+- [ ] **SHOULD-01:** Design responsivo com CSS Grid / Flexbox.
+- [ ] **SHOULD-02:** Console interativo simulando o laço de 3 retries de autoafinação.
+- [ ] **SHOULD-03:** Tema escuro nativo (Dark Mode) com variáveis CSS.
