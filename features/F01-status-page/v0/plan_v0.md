@@ -1,101 +1,206 @@
-# Plano de Tarefas Arquiteturais: F01 (v0)
+# plan_v0.md — Plano Arquitetural de Tarefas (F01)
+
+**Feature ID:** `F01`  
+**Slug:** `status-page`  
+**Versão Plano:** `v0`  
+**Data de Emissão:** 2025-01-16  
+**Arquiteto:** Agente 2 (Plan Architect)
 
 ---
 
-## 📑 Metadados de Auditoria (Architect Provenance)
-- **Identidade do Arquiteto:** `Agente 2 (Plan Architect)`
-- **Framework:** `REPLICABLE_HARNESS v6`
-- **Data e Horário do Planejamento:** `2026-08-14T13:10:00Z` *(Simulado)*
-- **Status do Plano:** Ativo (plan_v0.md)
-- **Feature Alvo:** `F01` — Página de Status de Desenvolvimento do Repositório Harness_teste
+## 📋 METADADOS DE AUDITORIA
+
+| Campo | Valor |
+|-------|-------|
+| **Especificação Base** | `spec_v0.md` (Agente 1 — Spec Compiler) |
+| **Versão Técnica do Modelo** | `claude-haiku-4-5-20251001` |
+| **Data de Geração do Plano** | 2025-01-16T13:09:38Z |
+| **Status do Plano** | EXECUTÁVEL / PRONTO PARA BUILD |
+| **Conformidade Constitucional** | ✅ ARTIGOS 1-4 validados |
 
 ---
 
-## 🏗️ 1. Estratégia Arquitetural (Architectural Strategy)
+## 🏛️ INVARIANTES CONSTITUCIONAIS AFETADOS
 
-A arquitetura para a **Página de Status de Desenvolvimento** baseia-se no paradigma *Vanilla Web*, garantindo zero dependência de cadeias de compilação (build steps) e máxima portabilidade. O Build Runner deverá implementar a solução utilizando a seguinte topologia de arquivos:
+### Invariantes Avaliados
+1. **ARTIGO 1 — Separação Estrita de Fases e Papéis**
+   - ✅ **Conformidade:** Este plano é **exclusivamente arquitetural**; não contém código de implementação.
+   - ✅ **Implicação:** Build Runner implementará isoladamente via sub-issues MoSCoW; nenhuma alteração a `spec_v0.md`.
 
-**Estrutura de Diretórios Proposta:**
-```text
-src/
-├── index.html        (Estrutura semântica e ponto de entrada)
-├── css/
-│   └── styles.css    (Design System via CSS Variables, Grid/Flexbox, Animações)
-└── js/
-    └── app.js        (Lógica de simulação do console e interatividade)
-```
+2. **ARTIGO 2 — Inviolabilidade da Linha de Base**
+   - ✅ **Conformidade:** Plano não altera `Features_state.md`; apenas decompõe F01 em tarefas atômicas.
+   - ✅ **Implicação:** Após validação positiva, F01 será adicionada como novo entry em baseline.
 
-**Decisões Técnicas:**
-- **HTML:** Uso de tags semânticas (`<header>`, `<main>`, `<section>`, `<article>`).
-- **CSS:** Adoção de uma abordagem *Mobile-First* com Media Queries. O estado global de design (cores, espaçamentos) será ancorado na pseudo-classe `:root`.
-- **JavaScript:** Padrão de módulo (ES6) ou script deferido (`<script defer>`), manipulando o DOM nativamente (`document.getElementById`, `createElement`, etc.) sem frameworks reativos.
+3. **ARTIGO 3 — Determinismo e Matriz de Corte MoSCoW**
+   - ✅ **Conformidade:** Decomposição segue matriz MoSCoW; score computável via `scripts/eval_moscow.py`.
+   - ✅ **Implicação:** Merge bloqueado se qualquer MUST HAVE não atingir 100%.
 
----
-
-## 🚫 2. Prevenção de Deriva Cognitiva (Anti-Drift Anchoring)
-
-Para garantir a conformidade com o **ARTIGO 4** da Constituição, o Build Runner deve operar sob as seguintes restrições absolutas:
-
-- **INVARIANTS TOUCHED:**
-  - **ARTIGO 1:** O Build Runner atuará apenas nos arquivos dentro do diretório `src/`. É estritamente proibido modificar arquivos em `governance/`, `.github/workflows/` ou a especificação.
-  - **ARTIGO 3:** O sucesso do PR será medido deterministicamente. O Build Runner deve focar primariamente nas sub-issues marcadas como **MUST HAVE**.
-- **NON-GOALS (Limites de Escopo):**
-  - **NÃO** inicializar projetos Node.js (`npm init`, `package.json`).
-  - **NÃO** importar bibliotecas externas via CDN (ex: Tailwind, React, jQuery).
-  - **NÃO** implementar chamadas `fetch()` ou `XMLHttpRequest` para APIs reais.
-  - **NÃO** utilizar `localStorage` ou `sessionStorage` para persistência de estado.
+4. **ARTIGO 4 — Prevenção de Deriva Cognitiva**
+   - ✅ **Conformidade:** Plano declara explicitamente NON-GOALS e limites de escopo.
+   - ✅ **Implicação:** Build Runner deve rejeitar qualquer expansão não autorizada.
 
 ---
 
-## 📋 3. Decomposição em Sub-issues MoSCoW (Execution Plan)
+## 🚫 NON-GOALS (Escopo Explicitamente Excluído)
 
-O Build Runner (Antigravity Desktop) deve executar as seguintes sub-issues sequencialmente. O laço de autoafinação (3-retry) deve ser utilizado para garantir a entrega dos requisitos SHOULD HAVE.
-
-### 🔴 Sub-issue 1: Fundação Estrutural e Identidade (MUST HAVE)
-**Objetivo:** Estabelecer o esqueleto do projeto e o cabeçalho semântico.
-**Tarefas:**
-1. Criar o diretório `src/` e os arquivos `index.html`, `css/styles.css` e `js/app.js`.
-2. Configurar o boilerplate do HTML5 em `index.html`, linkando o CSS e o JS.
-3. Implementar a tag `<header>` contendo o título exato `"Status - Harness_teste"`.
-4. Adicionar no cabeçalho um hiperlink (`<a>`) com o texto `"Harness Central"` apontando para `#`.
-**Critérios de Aceite:** `[M01]`, `[M02]` atendidos integralmente.
-
-### 🔴 Sub-issue 2: Superfície de Telemetria e Matriz MoSCoW (MUST & SHOULD HAVE)
-**Objetivo:** Construir os painéis visuais de estado e pontuação com design responsivo.
-**Tarefas:**
-1. Definir variáveis CSS (`:root`) em `styles.css` para cores (primária, secundária, sucesso, alerta, erro), tipografia e espaçamentos **(SHOULD - S02)**.
-2. Criar uma seção no HTML para os "Indicadores de Estágio". Adicionar 3 cards/badges visuais com os textos: `"GitHub Actions (Stage 1)"`, `"GitHub Actions (Stage 2)"` e `"Antigravity Desktop (Stage 3)"`.
-3. Criar uma seção para a "Matriz MoSCoW". Adicionar elementos visuais (barras de progresso estáticas ou contadores numéricos) para as categorias `MUST`, `SHOULD` e `COULD`.
-4. Aplicar CSS Flexbox/Grid e Media Queries para garantir que os painéis se adaptem a telas de celulares e desktops **(SHOULD - S01)**.
-**Critérios de Aceite:** `[M03]`, `[M04]`, `[S01]`, `[S02]` atendidos.
-
-### 🔴 Sub-issue 3: Console de Execução Simulado (MUST & SHOULD HAVE)
-**Objetivo:** Implementar a interface de log interativa e a lógica de simulação do laço de autoafinação.
-**Tarefas:**
-1. Criar uma área visual de "Console/Terminal" no HTML (fundo escuro, fonte monospace).
-2. No arquivo `app.js`, escrever uma função que injete dinamicamente linhas de log no console após o carregamento da página.
-3. A simulação deve imprimir sequencialmente (com pequenos atrasos via `setTimeout`) o fluxo de 3 retries. Exemplo de saída esperada:
-   - `> Iniciando laço de autoafinação...`
-   - `> Retry 1: Failed (Ajustando parâmetros)`
-   - `> Retry 2: Partial (Otimizando SHOULD HAVEs)`
-   - `> Retry 3: Success (100% MUST atingido)`
-4. Adicionar animações CSS (`@keyframes` ou `transition`) para que as novas linhas de log apareçam com um efeito de *fade-in* ou digitação **(SHOULD - S03)**.
-**Critérios de Aceite:** `[M05]`, `[S03]` atendidos.
-
-### 🟢 Sub-issue 4: Aprimoramentos de UX (COULD HAVE)
-**Objetivo:** Adicionar funcionalidades desejáveis de interface, caso o tempo e o laço de retries permitam.
-**Tarefas:**
-1. Implementar um botão/toggle no cabeçalho que alterne uma classe `.dark-mode` no elemento `<body>`, ajustando as variáveis CSS para um tema escuro **(COULD - C01)**.
-2. Adicionar o atributo `title` nativo do HTML (ou tooltips via CSS puro) nos indicadores de estágio (Stage 1, 2 e 3) com uma breve descrição de cada um **(COULD - C02)**.
-**Critérios de Aceite:** `[C01]`, `[C02]` atendidos (Não bloqueia o merge se falhar).
+| NON-GOAL | Justificativa | Responsabilidade |
+|----------|---------------|------------------|
+| **Modificação de `spec_v0.md`** | Spec é imutável após compilação; alterações requerem novo ciclo Agente 1. | Build Runner |
+| **Alteração de `governance/*`** | Arquivos constitucionais são read-only; violação bloqueia PR. | CI/CD (`check_invariants.py`) |
+| **Integração com GitHub API real** | Escopo de v1+; v0 usa dados hardcoded. | Agente 2 (Plan Architect) |
+| **Persistência de estado (localStorage)** | Escopo de v1+; v0 reseta ao reload. | Agente 2 (Plan Architect) |
+| **Bibliotecas externas (React, Vue, Bootstrap)** | Vanilla CSS3 + ES6 puro obrigatório. | Build Runner |
+| **Temas dinâmicos (dark/light mode)** | Escopo de v1+; design fixo em tema claro. | Agente 2 (Plan Architect) |
 
 ---
 
-## 🧪 4. Estratégia de Validação Local (Validation Strategy)
+## 📊 DECOMPOSIÇÃO MOSCOW — MATRIZ DE TAREFAS
 
-Antes de submeter o PR, o Build Runner deve garantir que a validação local passe pelos seguintes testes de sanidade:
+### 🔴 MUST HAVE (Bloqueadores de Merge — 100% obrigatório)
 
-1. **Teste de Build Zero:** Abrir o arquivo `src/index.html` diretamente no navegador (via protocolo `file://`). A página deve renderizar perfeitamente sem nenhum servidor local rodando.
-2. **Auditoria de Console:** Verificar o *Developer Tools* do navegador. Não deve haver erros de JavaScript (Red errors) nem falhas de carregamento de recursos (404).
-3. **Teste de Responsividade:** Redimensionar a janela do navegador para 320px de largura. O layout não deve quebrar horizontalmente (sem scroll horizontal indesejado).
-4. **Verificação de Invariantes:** Rodar mentalmente (ou via script local, se disponível) a checagem: *Foi adicionada alguma dependência externa?* Se sim, reverter imediatamente.
+#### **MUST-01: Renderização HTML5 Válida**
+- **Descrição:** Página deve ser HTML5 válido, sem erros de parsing.
+- **Critério de Aceitação:**
+  - ✅ Arquivo `docs/status-page/index.html` criado com doctype `<!DOCTYPE html>`.
+  - ✅ Validação W3C Markup Validator retorna 0 erros.
+  - ✅ Meta tags obrigatórias presentes: `charset="UTF-8"`, `viewport`.
+- **Esforço Estimado:** 1 ponto (trivial)
+- **Dependências:** Nenhuma
+- **Responsável:** Build Runner
+- **Verificação:** `html5-validator docs/status-page/index.html`
+
+---
+
+#### **MUST-02: Cabeçalho com Identidade Visual**
+- **Descrição:** Exibir "Harness_teste" + link para Replicable Harness v6 docs.
+- **Critério de Aceitação:**
+  - ✅ Cabeçalho renderiza com altura 80px (desktop), 60px (mobile).
+  - ✅ Gradiente azul (#0066cc → #0052a3) aplicado.
+  - ✅ Título "Harness_teste — Status de Desenvolvimento" visível em branco.
+  - ✅ Link "→ Replicable Harness v6" funcional (abre em nova aba).
+  - ✅ Logo/ícone 20×20px presente.
+- **Esforço Estimado:** 2 pontos
+- **Dependências:** MUST-01
+- **Responsável:** Build Runner
+- **Verificação:** Inspeção visual + teste de link
+
+---
+
+#### **MUST-03: Indicadores de 3 Pipelines**
+- **Descrição:** Mostrar status (RUNNING/SUCCESS/FAILED) para GH Stage 1, GH Stage 2, Antigravity Stage 3.
+- **Critério de Aceitação:**
+  - ✅ 3 cards renderizados em grid (1 coluna mobile, 3 colunas desktop).
+  - ✅ Cada card exibe: título, ícone de status (⏳/✅/❌), label, timestamp.
+  - ✅ Cores de fundo corretas: Amarelo (#fff3cd) / Verde (#d4edda) / Vermelho (#f8d7da).
+  - ✅ Barra de progresso (0-100%) presente em cada card.
+  - ✅ Simulação de atualização a cada 5 segundos (JS).
+- **Esforço Estimado:** 3 pontos
+- **Dependências:** MUST-01, MUST-02
+- **Responsável:** Build Runner
+- **Verificação:** Inspeção visual + console JS sem erros
+
+---
+
+#### **MUST-04: Matriz MoSCoW com Contadores**
+- **Descrição:** Exibir cards com MUST (n), SHOULD (n), COULD (n) features.
+- **Critério de Aceitação:**
+  - ✅ 3 cards renderizados em grid (1 coluna mobile, 3 colunas desktop).
+  - ✅ Cada card exibe: título ("MUST HAVE" / "SHOULD HAVE" / "COULD HAVE"), contador grande (ex: "12").
+  - ✅ Percentual de conclusão visível (ex: "100%", "75%", "0%").
+  - ✅ Barra de progresso circular (SVG) presente.
+  - ✅ Cores temáticas: Vermelho (#dc3545) / Laranja (#fd7e14) / Azul (#0066cc).
+  - ✅ Contadores atualizáveis via JS (simulação).
+- **Esforço Estimado:** 3 pontos
+- **Dependências:** MUST-01, MUST-02
+- **Responsável:** Build Runner
+- **Verificação:** Inspeção visual + teste de atualização JS
+
+---
+
+#### **MUST-05: Console de Log Simulado**
+- **Descrição:** Renderizar área de log com 3 retries de autoafinação.
+- **Critério de Aceitação:**
+  - ✅ Área monoespacial (font-family: monospace) com altura 300px (desktop), 200px (mobile).
+  - ✅ Fundo preto (#1a1a1a), texto verde (#00ff00).
+  - ✅ Simulação de 3 retries com eventos de log (timestamps, status).
+  - ✅ Transições de cor: amarelo (RUNNING) → verde (SUCCESS).
+  - ✅ Scroll automático para o final (tail behavior).
+  - ✅ Intervalo de 2 segundos entre eventos de log.
+- **Esforço Estimado:** 4 pontos
+- **Dependências:** MUST-01, MUST-02
+- **Responsável:** Build Runner
+- **Verificação:** Inspeção visual + teste de simulação de tempo
+
+---
+
+#### **MUST-06: Responsividade Mobile**
+- **Descrição:** Página funciona em viewport 320px (mobile), 768px (tablet), 1024px+ (desktop).
+- **Critério de Aceitação:**
+  - ✅ Sem overflow horizontal em nenhum breakpoint.
+  - ✅ Layout adapta corretamente: 1 coluna (mobile) → 3 colunas (desktop).
+  - ✅ Fontes legíveis em todos os tamanhos (min 14px mobile, 16px desktop).
+  - ✅ Espaçamento (padding/margin) proporcional ao viewport.
+  - ✅ Testado em DevTools (Chrome, Firefox, Safari).
+- **Esforço Estimado:** 3 pontos
+- **Dependências:** MUST-01 a MUST-05
+- **Responsável:** Build Runner
+- **Verificação:** Teste em DevTools; screenshot em 3 breakpoints
+
+---
+
+#### **MUST-07: Acessibilidade WCAG 2.1 AA**
+- **Descrição:** Contraste ≥4.5:1; navegação por teclado (Tab); ARIA labels.
+- **Critério de Aceitação:**
+  - ✅ Contraste de cores ≥4.5:1 (verificado com axe DevTools).
+  - ✅ Navegação por teclado funcional: Tab, Shift+Tab, Enter.
+  - ✅ ARIA labels em elementos interativos (botões, links, inputs).
+  - ✅ Headings estruturados (h1, h2, h3) em ordem lógica.
+  - ✅ Lighthouse audit: score ≥90 em acessibilidade.
+- **Esforço Estimado:** 3 pontos
+- **Dependências:** MUST-01 a MUST-06
+- **Responsável:** Build Runner
+- **Verificação:** `axe DevTools` + `Lighthouse audit`
+
+---
+
+#### **MUST-08: Zero Dependências Externas**
+- **Descrição:** Nenhum `<script src="...">` para bibliotecas; apenas CSS inline + JS inline.
+- **Critério de Aceitação:**
+  - ✅ Nenhuma requisição HTTP para bibliotecas externas (React, Vue, Bootstrap, etc.).
+  - ✅ CSS inline em `<style>` tag no `<head>`.
+  - ✅ JavaScript inline em `<script>` tag no final do `<body>`.
+  - ✅ Arquivo HTML único, auto-contido (≤50 KB).
+  - ✅ Inspeção do Network tab: 0 requisições externas.
+- **Esforço Estimado:** 2 pontos
+- **Dependências:** MUST-01 a MUST-07
+- **Responsável:** Build Runner
+- **Verificação:** Inspeção do HTML + Network tab do DevTools
+
+---
+
+### 🟡 SHOULD HAVE (Otimizações — máximo esforço, não bloqueador)
+
+#### **SHOULD-01: Animações Suaves**
+- **Descrição:** Transições CSS3 para mudanças de estado (0.3s ease-in-out).
+- **Critério de Aceitação:**
+  - ✅ Transições CSS3 aplicadas a mudanças de cor, opacidade, transform.
+  - ✅ Duração: 0.3s, timing-function: ease-in-out.
+  - ✅ Sem jank (60fps); testado em DevTools Performance tab.
+  - ✅ Hover effects em cards e links.
+- **Esforço Estimado:** 2 pontos
+- **Dependências:** MUST-01 a MUST-08
+- **Responsável:** Build Runner
+- **Verificação:** Inspeção visual + Performance tab
+
+---
+
+#### **SHOULD-02: Simulação de Tempo Real**
+- **Descrição:** Console de log atualiza a cada 2s com novos eventos de retry.
+- **Critério de Aceitação:**
+  - ✅ Eventos de log aparecem a cada 2 segundos.
+  - ✅ Timestamps atualizados automaticamente.
+  - ✅ Transições de estado visíveis (amarelo → verde).
+  - ✅ Simulação contínua (loop infinito ou até 3 ciclos completos).
+- **Esforço Estimado:** 2 pontos
+- **Dependências:** MUST-05
+- **

@@ -3,72 +3,203 @@
 ---
 
 ## 📑 Metadados de Auditoria (Compiler Provenance)
-- **Identidade do Compilador:** `Google Gemini 3.1 Pro (gemini-3.1-pro-preview)`
-- **Versão Técnica do Modelo:** `gemini-3.1-pro-preview`
-- **Data e Horário da Compilação:** `2026-08-14T13:06:42Z`
+- **Identidade do Compilador:** `Anthropic Claude Haiku (claude-haiku-4-5-20251001)`
+- **Versão Técnica do Modelo:** `claude-haiku-4-5-20251001`
+- **Data e Horário da Compilação:** `2026-08-14T13:09:38Z`
 - **Status da Especificação:** Normativa / Ativa (v0)
 
 ---
 
 
-# Especificação Normativa Executável (spec_v0.md)
-**Feature ID:** `F01` — Página de Status de Desenvolvimento do Repositório Harness_teste
-**Compilador:** Agente 1 (Spec Compiler)
-**Framework:** REPLICABLE_HARNESS v6
+# spec_v0.md — Página de Status de Desenvolvimento (F01)
+
+**Feature ID:** `F01`  
+**Slug:** `status-page`  
+**Versão Spec:** `v0`  
+**Status:** EXECUTÁVEL  
+**Data de Emissão:** 2025-01-16
 
 ## 🎯 1. Visão Geral e Desenho Comportamental (Behavioral Blueprint)
 
-A presente especificação define o contrato de interface e o comportamento estrutural para a **Página de Status de Desenvolvimento** do repositório `Harness_teste`. O artefato atuará como uma superfície de telemetria visual estática (client-side), projetada para refletir o ciclo de vida e a integração com o `Replicable Harness v6`.
+### Propósito Normativo
+Estabelecer a especificação executável para uma página HTML5 responsiva que funcione como **painel de status visual em tempo real** do repositório `Harness_teste`, integrando indicadores da arquitetura híbrida (GitHub Actions + Antigravity Desktop) e métricas MoSCoW de features.
 
-O *Behavioral Blueprint* exige a construção de um *dashboard* semântico, operando estritamente no navegador, composto pelos seguintes domínios visuais:
-1. **Contract Boundary de Identidade:** Cabeçalho semântico contendo a nomenclatura do projeto (`Harness_teste`) e âncora de navegação para o *Harness Central*.
-2. **Superfície de Telemetria da Arquitetura Híbrida:** Painel de indicadores de estado (*state indicators*) segregando visualmente os estágios de execução: GitHub Actions (Stage 1 e 2) e Antigravity Desktop (Stage 3).
-3. **Matriz de Resolução MoSCoW:** Componente de visualização de dados que expõe a pontuação determinística de features categorizadas em MUST, SHOULD e COULD.
-4. **Console de Execução Simulado:** Interface de log interativa que emula o comportamento do laço de autoafinação local (*3-retry auto-tuning loop*), demonstrando a progressão de refinamento de código.
-
-A arquitetura técnica baseia-se em **Vanilla Web Technologies** (HTML5 semântico, CSS3 moderno com CSS Variables/Grid/Flexbox e ES6+ JavaScript), garantindo alta performance e zero dependência de cadeias de build complexas no client-side.
+### Contrato de Comportamento (Contract Boundary)
+A página deve:
+1. **Renderizar sem dependências externas** (Vanilla CSS3 + ES6 JavaScript puro).
+2. **Exibir estado simulado** de 3 pipelines paralelos (GH Actions Stage 1, GH Actions Stage 2, Antigravity Desktop Stage 3).
+3. **Apresentar matriz MoSCoW interativa** com contadores de features por categoria (MUST, SHOULD, COULD).
+4. **Simular console de log** do laço de autoafinação com 3 retries, mostrando transições de estado.
+5. **Ser totalmente responsivo** (mobile-first, breakpoints em 768px e 1024px).
+6. **Ser acessível** (WCAG 2.1 AA mínimo: contraste ≥4.5:1, navegação por teclado, ARIA labels).
 
 ## 🚫 2. Limites de Escopo (NON-GOALS)
 
-Para mitigar qualquer risco de *scope creep* e garantir a prevenção de deriva cognitiva (*Anti-Drift Anchoring*), os seguintes itens estão expressamente fora do escopo desta iteração (v0):
-
-- **NON-GOAL 1 (Zero Backend/State Persistence):** Não haverá integração com APIs REST/GraphQL, WebSockets reais, ou bancos de dados. O estado será efêmero e gerenciado via simulação estática no client-side (Mock Data).
-- **NON-GOAL 2 (Zero External Dependencies):** É estritamente proibido o uso de frameworks ou bibliotecas pesadas de UI/UX (ex: React, Vue, Angular, Tailwind CSS, Bootstrap, jQuery). A estilização e o comportamento devem ser resolvidos nativamente.
-- **NON-GOAL 3 (Zero CI/CD Triggering):** A interface não possuirá capacidade de invocar ou alterar o estado real dos pipelines do GitHub Actions ou do Antigravity Desktop. Trata-se de uma visualização *read-only* simulada.
+| NON-GOAL | Justificativa |
+|----------|---------------|
+| **Backend dinâmico ou API REST** | v0 é POC estático; dados hardcoded em JSON embutido no HTML. |
+| **Bibliotecas externas (React, Vue, Bootstrap)** | Vanilla CSS3 Grid/Flexbox + ES6 puro garante zero dependências. |
+| **Integração com GitHub API real** | Simulação de dados; integração real é escopo de v1+. |
+| **Persistência de estado (localStorage)** | Dados resetam ao reload; v1 pode adicionar persistência. |
+| **Autenticação ou autorização** | Página pública; sem controle de acesso nesta versão. |
+| **Temas dinâmicos (dark/light mode)** | Design fixo em tema claro; modo escuro é escopo futuro. |
 
 ---
 
 ## 🏛️ 3. Invariantes Constitucionais Afetados (INVARIANTS TOUCHED)
 
-Esta especificação foi compilada sob estrita observância do `CONSTITUTION.md`:
+### Invariantes Avaliados
+1. **ARTIGO 1 — Separação Estrita de Fases e Papéis**
+   - ✅ **Conformidade:** Esta spec é **exclusivamente normativa**; não contém código de implementação, apenas contratos comportamentais e critérios de aceitação.
+   - ✅ **Implicação:** O Agente 2 (Plan Architect) gerará `plan_v0.md` com sub-issues MoSCoW; o Build Runner implementará isoladamente.
 
-- **ARTIGO 1 (Strict Stage Isolation):** O Agente 1 limitou-se a definir o *o quê* (requisitos e limites). Nenhum plano de implementação, estrutura de diretórios ou código-fonte foi gerado neste documento.
-- **ARTIGO 2 (Baseline Invariance):** A implementação desta feature não requer mutação de contratos preexistentes em `governance/Features_state.md`. Trata-se de uma adição isolada na camada de apresentação.
-- **ARTIGO 3 (Determinism & MoSCoW):** Os critérios de aceitação abaixo fornecem a matriz exata que o `scripts/eval_moscow.py` utilizará para computar o score determinístico do PR.
-- **ARTIGO 4 (Anti-Drift Anchoring):** A seção de NON-GOALS blinda o Agente 2 (Plan Architect) e o Build Runner contra a introdução de complexidade acidental (ex: adição de bundlers como Webpack/Vite).
+2. **ARTIGO 2 — Inviolabilidade da Linha de Base**
+   - ✅ **Conformidade:** F01 é nova feature; não altera contratos existentes em `Features_state.md`.
+   - ✅ **Implicação:** Após validação positiva, será adicionada como novo entry em baseline.
+
+3. **ARTIGO 3 — Determinismo e Matriz de Corte MoSCoW**
+   - ✅ **Conformidade:** Critérios de aceitação são computáveis e auditáveis via `scripts/eval_moscow.py`.
+   - ✅ **Implicação:** Score final = (MUST_atendidos / MUST_totais) × 100%; merge bloqueado se < 100%.
+
+4. **ARTIGO 4 — Prevenção de Deriva Cognitiva**
+   - ✅ **Conformidade:** Esta spec declara explicitamente NON-GOALS e INVARIANTS TOUCHED.
+   - ✅ **Implicação:** Agentes devem rejeitar qualquer expansão de escopo não autorizada.
 
 ---
 
 ## 📊 4. CRITÉRIOS DE ACEITAÇÃO MoSCoW
 
-A matriz a seguir define os limites de aceitação para a validação determinística. A tentativa de build só será elegível para merge se atingir **100% dos requisitos MUST HAVE**.
+### 🔴 MUST HAVE (Bloqueadores de Merge — 100% obrigatório)
 
-### 🔴 MUST HAVE (Obrigatório para Merge - 100% de conformidade exigida)
-- **[M01]** O artefato final deve ser um arquivo `index.html` (acompanhado ou não de arquivos `.css` e `.js` puros), sem requerer processos de transpilação ou *build steps* (ex: npm install).
-- **[M02]** A interface deve renderizar um cabeçalho contendo o título "Status - Harness_teste" e um hiperlink funcional (mesmo que para um placeholder `#`) apontando para "Harness Central".
-- **[M03]** A interface deve exibir indicadores visuais distintos (ex: cards, badges ou ícones) representando os três estágios da Arquitetura Híbrida: "GitHub Actions (Stage 1)", "GitHub Actions (Stage 2)" e "Antigravity Desktop (Stage 3)".
-- **[M04]** A interface deve conter uma seção dedicada à "Matriz MoSCoW", exibindo contadores ou barras de progresso simuladas para as categorias MUST, SHOULD e COULD.
-- **[M05]** A interface deve implementar um "Console de Log" via JavaScript Vanilla que simule visualmente a injeção de linhas de texto representando o laço de autoafinação de 3 retries (ex: *Retry 1: Failed -> Retry 2: Partial -> Retry 3: Success*).
+| ID | Critério | Descrição | Verificação |
+|----|----------|-----------|------------|
+| **M1** | Renderização HTML5 válida | Página deve ser HTML5 válido, sem erros de parsing. | `html5-validator` ou `W3C Markup Validator` |
+| **M2** | Cabeçalho com identidade | Exibir "Harness_teste" + link para Replicable Harness v6 docs. | Inspeção visual; link funcional. |
+| **M3** | Indicadores de 3 pipelines | Mostrar status (RUNNING/SUCCESS/FAILED) para GH Stage 1, GH Stage 2, Antigravity Stage 3. | Cada pipeline renderiza com ícone + label + timestamp. |
+| **M4** | Matriz MoSCoW com contadores | Exibir cards com MUST (n), SHOULD (n), COULD (n) features. | Contadores visíveis e atualizáveis via JS. |
+| **M5** | Console de log simulado | Renderizar área de log com 3 retries de autoafinação (Retry 1, 2, 3). | Logs aparecem com timestamps; transições de cor (amarelo→verde). |
+| **M6** | Responsividade mobile | Página funciona em viewport 320px (mobile), 768px (tablet), 1024px+ (desktop). | Teste em DevTools; sem overflow horizontal. |
+| **M7** | Acessibilidade WCAG 2.1 AA | Contraste ≥4.5:1; navegação por teclado (Tab); ARIA labels em elementos interativos. | axe DevTools ou Lighthouse audit. |
+| **M8** | Zero dependências externas | Nenhum `<script src="...">` para bibliotecas; apenas CSS inline + JS inline. | Inspeção do HTML; nenhuma requisição HTTP para libs. |
 
-### 🟡 SHOULD HAVE (Alvo de otimização no laço de 3 retries locais)
-- **[S01]** O layout deve ser responsivo, adaptando-se adequadamente a viewports de dispositivos móveis e desktops utilizando CSS Media Queries.
-- **[S02]** A estilização deve utilizar CSS Custom Properties (Variáveis CSS) para definir a paleta de cores, tipografia e espaçamentos, garantindo um design system coeso e limpo.
-- **[S03]** O "Console de Log" deve apresentar animações suaves (CSS Transitions/Keyframes) ao inserir novas linhas, simulando o efeito de digitação ou *fade-in* de um terminal real.
+### 🟡 SHOULD HAVE (Otimizações — máximo esforço, não bloqueador)
 
-### 🟢 COULD HAVE (Desejável, mas não impacta o score de aprovação)
-- **[C01]** Implementação de um *toggle* (interruptor) para alternar entre Tema Claro (Light Mode) e Tema Escuro (Dark Mode).
-- **[C02]** Adição de *tooltips* nativos (atributo `title` ou CSS puro) nos indicadores da Arquitetura Híbrida para explicar brevemente o que cada estágio faz.
+| ID | Critério | Descrição | Verificação |
+|----|----------|-----------|------------|
+| **S1** | Animações suaves | Transições CSS3 para mudanças de estado (0.3s ease-in-out). | Inspeção visual; sem jank (60fps). |
+| **S2** | Simulação de tempo real | Console de log atualiza a cada 2s com novos eventos de retry. | Observar mudanças no console ao longo do tempo. |
+| **S3** | Paleta de cores temática | Usar cores que remetem a "desenvolvimento" (azul, verde, laranja, vermelho). | Inspeção visual; paleta coerente. |
+| **S4** | Ícones SVG inline | Usar SVG puro (não imagens externas) para ícones de status. | Inspeção do HTML; `<svg>` inline. |
+| **S5** | Rodapé com metadados | Exibir versão da spec (v0), data de geração, hash de commit (simulado). | Rodapé visível com informações. |
 
-### ⚪ WON'T HAVE (Explicitamente excluído desta iteração)
-- **[W01]** Conexão real com a API do GitHub para buscar o status verdadeiro das Actions.
-- **[W02]** Persistência do histórico de logs do console simulado após o *refresh* da página.
+### 🔵 COULD HAVE (Desejos — escopo futuro)
+
+| ID | Critério | Descrição | Escopo |
+|----|----------|-----------|--------|
+| **C1** | Modo escuro | Toggle para tema dark mode. | v1+ |
+| **C2** | Integração com GitHub API | Buscar status real de workflows. | v1+ |
+| **C3** | Gráficos de histórico | Chart.js ou D3.js para tendências de features. | v2+ |
+| **C4** | Notificações push | Alertar quando pipeline falha. | v2+ |
+
+---
+
+## 🏗️ 5. Estrutura de Artefatos Esperados
+
+### Arquivo Principal
+- **Caminho:** `docs/status-page/index.html`
+- **Tamanho máximo:** 50 KB (HTML + CSS + JS inline)
+- **Encoding:** UTF-8
+
+### Estrutura Interna do HTML
+```
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harness_teste — Status de Desenvolvimento</title>
+    <style>/* CSS inline aqui */</style>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <!-- Seção de Pipelines -->
+    <!-- Seção MoSCoW -->
+    <!-- Console de Log -->
+    <!-- Rodapé -->
+    <script>/* JS inline aqui */</script>
+  </body>
+</html>
+```
+
+---
+
+## 🎨 6. Especificação de Componentes Visuais
+
+### 6.1 Cabeçalho (Header)
+- **Altura:** 80px (desktop), 60px (mobile)
+- **Conteúdo:**
+  - Logo/Ícone (20×20px)
+  - Título: "Harness_teste — Status de Desenvolvimento"
+  - Link: "→ Replicable Harness v6" (abre em nova aba)
+- **Fundo:** Gradiente azul (#0066cc → #0052a3)
+- **Texto:** Branco (#ffffff)
+
+### 6.2 Seção de Pipelines (Pipeline Status)
+- **Layout:** 3 cards em grid (1 coluna mobile, 3 colunas desktop)
+- **Card por pipeline:**
+  - Título: "GitHub Actions Stage 1" / "GitHub Actions Stage 2" / "Antigravity Desktop Stage 3"
+  - Ícone de status: ⏳ (RUNNING), ✅ (SUCCESS), ❌ (FAILED)
+  - Cor de fundo: Amarelo (#fff3cd) / Verde (#d4edda) / Vermelho (#f8d7da)
+  - Timestamp: "Última atualização: 2025-01-16 14:32:15 UTC"
+  - Progresso: Barra de progresso (0-100%)
+
+### 6.3 Seção MoSCoW (Feature Matrix)
+- **Layout:** 3 cards em grid (1 coluna mobile, 3 colunas desktop)
+- **Card por categoria:**
+  - Título: "MUST HAVE" / "SHOULD HAVE" / "COULD HAVE"
+  - Contador grande: "12" (número de features)
+  - Percentual de conclusão: "100%" / "75%" / "0%"
+  - Barra de progresso circular (SVG)
+  - Cor temática: Vermelho (#dc3545) / Laranja (#fd7e14) / Azul (#0066cc)
+
+### 6.4 Console de Log (Retry Simulation)
+- **Layout:** Área monoespacial (font-family: monospace)
+- **Altura:** 300px (desktop), 200px (mobile)
+- **Fundo:** Preto (#1a1a1a)
+- **Texto:** Verde (#00ff00)
+- **Conteúdo simulado:**
+  ```
+  [14:32:15] Iniciando autoafinação...
+  [14:32:17] Retry 1/3: Compilando spec...
+  [14:32:19] ✓ Spec compilada com sucesso
+  [14:32:21] Retry 2/3: Validando critérios MoSCoW...
+  [14:32:23] ✓ 12/12 MUST HAVE atendidos
+  [14:32:25] Retry 3/3: Finalizando...
+  [14:32:27] ✓ Build elegível para merge
+  ```
+- **Scroll:** Automático para o final (tail behavior)
+
+### 6.5 Rodapé (Footer)
+- **Altura:** 40px
+- **Conteúdo:**
+  - "Spec v0 | Gerado em 2025-01-16 | Hash: abc1234d (simulado)"
+  - Link: "Editar spec" (aponta para `spec_v0.md` no GitHub)
+- **Fundo:** Cinza (#f8f9fa)
+- **Texto:** Cinza escuro (#495057)
+
+---
+
+## 🔄 7. Comportamento Dinâmico (JavaScript)
+
+### 7.1 Simulação de Pipelines
+- **Ciclo:** A cada 5 segundos, atualizar status de um pipeline aleatoriamente.
+- **Estados:** RUNNING → SUCCESS (ou FAILED com 10% de chance).
+- **Progresso:** Incrementar barra de progresso de 0% a 100% durante RUNNING.
+
+### 7.2 Simulação de Retries
+- **Acionador:** Ao carregar a página, iniciar simulação de 3 retries.
+- **Intervalo:** 2 segundos entre eventos de log.
+- **Eventos:**
+  1. "Iniciando autoafinação..."
+  2. "Retry 1/3: Compilando spec..."
+  3. "✓ Spec compilada com sucesso"
+  4
