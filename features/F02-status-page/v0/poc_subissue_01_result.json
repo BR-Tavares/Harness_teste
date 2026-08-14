@@ -1,0 +1,59 @@
+{
+  "feature": "F02",
+  "subissue": "01",
+  "version": "v0",
+  "champion_attempt": {
+    "attempt": 3,
+    "must_passed": 4,
+    "must_total": 4,
+    "should_passed": 4,
+    "should_total": 4,
+    "total_score": 52,
+    "status": "MAXIMAL_PERFECTION",
+    "feedback": "100% MUST e 100% SHOULD atingidos. Score Máximo."
+  },
+  "attempts_history": [
+    {
+      "attempt": 1,
+      "must_passed": 3,
+      "must_total": 4,
+      "should_passed": 2,
+      "should_total": 4,
+      "total_score": 36,
+      "status": "FAILED",
+      "feedback": "Implementação base. Disparando refinamento de CSS no Retry 2."
+    },
+    {
+      "attempt": 2,
+      "must_passed": 4,
+      "must_total": 4,
+      "should_passed": 3,
+      "should_total": 4,
+      "total_score": 49,
+      "status": "QUALIFIED",
+      "feedback": "Contratos MUST atingidos. Otimizando microinterações no Retry 3."
+    },
+    {
+      "attempt": 3,
+      "must_passed": 4,
+      "must_total": 4,
+      "should_passed": 4,
+      "should_total": 4,
+      "total_score": 52,
+      "status": "MAXIMAL_PERFECTION",
+      "feedback": "100% MUST e 100% SHOULD atingidos. Score Máximo."
+    }
+  ],
+  "static_checks": {
+    "exists": true,
+    "mh01_vanilla_no_cdn": false,
+    "mh02_header_title_and_link": true,
+    "mh03_hybrid_stages": false,
+    "mh04_moscow_metrics": true,
+    "sh01_responsive_css": true,
+    "sh02_interactive_console": true,
+    "sh03_three_retries_sim": true,
+    "sh04_dark_mode_css_vars": true
+  },
+  "timestamp": "2026-08-14T04:45:37Z"
+}
