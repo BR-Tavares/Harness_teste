@@ -26,5 +26,4 @@ jobs:
     with:
       feature_id: ${{ inputs.feature_id || 'F01' }}
       version: ${{ inputs.version || 'v0' }}
-    secrets:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    secrets: inherit
