@@ -1,0 +1,15 @@
+name: Engine Health Check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-health-check:
+    name: Call Central Engine Health Check
+    uses: BR-Tavares/Replicable_Harness_spec_gh-aw/.github/workflows/reusable-engine-healthcheck.yml@main
+    with:
+      output_file: engine_health.html
+    secrets: inherit
