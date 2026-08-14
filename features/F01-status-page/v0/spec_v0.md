@@ -3,65 +3,70 @@
 ---
 
 ## 📑 Metadados de Auditoria (Compiler Provenance)
-- **Identidade do Compilador:** Agente 1 (Spec Compiler) — REPLICABLE_HARNESS v6
-- **Versão Técnica do Modelo:** `GPT-4o-2024-05-13 / Spec Compiler Engine v6.0.1`
-- **Data e Horário da Compilação:** `2026-08-14T04:13:52Z`
+- **Identidade do Compilador:** `Google Gemini Engine`
+- **Versão Técnica do Modelo:** `gemini-3.5-flash`
+- **Data e Horário da Compilação:** `2026-08-14T04:15:47Z`
 - **Status da Especificação:** Normativa / Ativa (v0)
 
 ---
 
-## 🎯 1. Visão Geral e Objetivos de Negócio (Behavioral Blueprint)
 
-Esta especificação define o comportamento, a estrutura e as restrições de interface para a **Página de Status de Desenvolvimento do Repositório Harness_teste** (`F01`). 
+## 🎯 1. Visão Geral e Desenho Comportamental (Behavioral Blueprint)
 
-O objetivo de negócio é fornecer uma interface de usuário (UI) estática, moderna e de alta fidelidade visual que sirva como o painel central de observabilidade para o ecossistema de testes e automação do `Replicable Harness v6`. A página deve consolidar visualmente o estado da arquitetura híbrida de execução, as métricas de conformidade MoSCoW e simular o comportamento do laço de autoafinação local.
+A presente especificação define os requisitos comportamentais, de interface e de contrato para a implementação da **F01: Página de Status de Desenvolvimento** do repositório `Harness_teste`. Esta página atua como o painel visual unificado (dashboard) que consolida o estado de conformidade, arquitetura e execução do ciclo de vida do `Replicable Harness v6`.
 
----
+### 1.1 Fronteira de Contrato (Contract Boundary)
+*   **Artefato Principal:** Um único arquivo HTML autossuficiente localizado na raiz do repositório (`index.html`).
+*   **Dependências:** Zero dependências de rede externas (scripts CDN, fontes remotas ou frameworks pesados). Todo o estilo e comportamento interativo devem ser resolvidos localmente via Vanilla CSS e Vanilla JS embutidos ou referenciados de forma relativa e offline-first.
+*   **Portabilidade:** O arquivo deve ser executável diretamente via protocolo `file://` no navegador ou servido por qualquer servidor estático simples (ex: `python -m http.server`).
+
+### 1.2 Comportamento da Interface (UI/UX Blueprint)
+A interface deve ser estruturada em uma grade responsiva (Grid/Flexbox) contendo quatro quadrantes ou seções principais:
+1.  **Header de Identificação:** Identifica o repositório alvo (`Harness_teste`) e provê rastreabilidade com link de navegação para o ecossistema central.
+2.  **Painel de Arquitetura Híbrida:** Representação visual dos três estágios operacionais do Harness:
+    *   *Stage 1 (GitHub Actions):* Validação de Sintaxe e Invariantes.
+    *   *Stage 2 (GitHub Actions):* Geração de Plano e Alocação.
+    *   *Stage 3 (Antigravity Desktop):* Execução Local e Laço de Autoafinação.
+3.  **Matriz de Métricas MoSCoW:** Exibição clara do progresso de conformidade do projeto, detalhando o status dos requisitos (Must Have, Should Have, Could Have).
+4.  **Console de Log Interativo:** Um componente simulador de terminal que demonstra visualmente o comportamento do motor de autoafinação (Self-Tuning Loop) em seus ciclos de retry.
 
 ## 🚫 2. Limites de Escopo (NON-GOALS)
 
-Para garantir a aderência estrita ao escopo da versão `v0` (Proof of Concept) e evitar a deriva cognitiva (*scope creep*), os seguintes itens estão explicitamente fora do escopo desta especificação:
-
-- **NON-GOAL 1:** Integração em tempo real com APIs dinâmicas de backend, bancos de dados ou webhooks ativos do GitHub nesta versão. Toda a reatividade e exibição de dados devem ser baseadas em estados simulados (*mocked*) no lado do cliente (*client-side*).
-- **NON-GOAL 2:** Utilização de frameworks de renderização pesados (como React, Angular, Vue) ou bibliotecas de estilização externas via CDN (como Tailwind CSS ou Bootstrap). A interface deve ser construída exclusivamente com tecnologias web nativas (HTML5, Vanilla CSS e Vanilla JS).
-- **NON-GOAL 3:** Mecanismos de autenticação, controle de acesso ou persistência de estado do usuário.
+Para garantir a viabilidade técnica da versão `v0` (Proof of Concept) e evitar a deriva cognitiva (*scope creep*), os seguintes pontos estão explicitamente fora de escopo:
+*   **NON-GOAL 1:** Integração em tempo real com APIs dinâmicas do GitHub ou WebSockets ativos nesta versão. Toda a reatividade do console de logs e indicadores deve ser simulada deterministicamente no lado do cliente (client-side mock).
+*   **NON-GOAL 2:** Persistência de dados em banco de dados (SQL/NoSQL) ou necessidade de um servidor de aplicação ativo (Node.js, Python, PHP, etc.).
+*   **NON-GOAL 3:** Utilização de frameworks de renderização reativa (React, Vue, Angular) ou pré-processadores de CSS que exijam etapa de compilação/build.
 
 ---
 
 ## 🏛️ 3. Invariantes Constitucionais Afetados (INVARIANTS TOUCHED)
 
-A implementação desta especificação deve respeitar e refletir os seguintes princípios do `CONSTITUTION.md`:
-
-- **Artigo 1 — Separação Estrita de Fases:** Esta especificação atua estritamente como o limite de contrato (*contract boundary*). Nenhuma linha de código de produção ou plano de tarefas é gerada nesta fase.
-- **Artigo 2 — Inviolabilidade da Linha de Base:** A implementação desta página não deve alterar nenhum arquivo contido no diretório `governance/` ou modificar os contratos de baseline estabelecidos em `Features_state.md`.
-- **Artigo 3 — Determinismo e Matriz de Corte MoSCoW:** A interface deve expor visualmente a lógica de pontuação e os critérios de aceitação definidos no ecossistema, servindo como um espelho didático do motor de avaliação do Harness.
+A implementação desta feature interage diretamente com os seguintes princípios do `CONSTITUTION.md`:
+*   **Artigo 1 (Separação Estrita de Fases):** A página de status deve refletir visualmente a separação de fases entre o ambiente de CI (GitHub Actions - Stages 1 e 2) e o ambiente local (Antigravity Desktop - Stage 3).
+*   **Artigo 3 (Determinismo e Matriz MoSCoW):** A exibição das métricas na página deve seguir estritamente a nomenclatura e a lógica de pontuação auditável do Harness, servindo como espelho visual do arquivo `Features_state.md`.
+*   **Áreas Protegidas:** O arquivo gerado (`index.html`) não deve modificar, sobrescrever ou interferir em nenhum arquivo contido no diretório `governance/` ou nos scripts de validação do Harness.
 
 ---
 
 ## 📊 4. CRITÉRIOS DE ACEITAÇÃO MoSCoW
 
-A elegibilidade para homologação desta feature depende do atendimento estrito da matriz abaixo, auditada deterministicamente.
+O sucesso da implementação da feature `F01` será avaliado estritamente com base nos critérios abaixo.
 
-### 🟢 MUST HAVE (Obrigatório para liberação da v0)
-- **MH1 [Estrutura de Arquivo Único]:** Toda a aplicação deve ser contida em uma estrutura estática simples (ex: `index.html` com CSS e JS embutidos ou referenciados localmente), sem necessidade de servidores de build ou empacotadores (Webpack, Vite).
-- **MH2 [Identificação do Repositório]:** O cabeçalho da página deve exibir de forma proeminente o nome do repositório `Harness_teste` e conter um link funcional (hiperlink) apontando para o repositório central do Harness.
-- **MH3 [Status da Arquitetura Híbrida]:** Exibição visual clara e distinta de três blocos/cards representando os estágios de execução:
-  - **Stage 1:** GitHub Actions (Validação de Sintaxe e Invariantes).
-  - **Stage 2:** GitHub Actions (Geração de Plano e Alocação).
-  - **Stage 3:** Antigravity Desktop (Execução Local e Autoafinação).
-- **MH4 [Matriz de Métricas MoSCoW]:** Exibição de um painel contendo a distribuição de requisitos (MUST, SHOULD, COULD) e um indicador visual do score de conformidade atual do repositório.
-- **MH5 [Zero Dependências Externas de Runtime]:** A página deve renderizar perfeitamente offline ou sem conexão com CDNs externas. Todo o CSS e comportamento interativo devem ser nativos.
+### 4.1 MUST HAVE (Obrigatório para aprovação do Build)
 
-### 🟡 SHOULD HAVE (Altamente recomendado para experiência do usuário)
-- **SH1 [Console de Log Interativo]:** Um componente visual que simula um terminal/console de log. Ao carregar a página ou ao clicar em um botão de "Simular Execução", o console deve exibir sequencialmente (com delay realista) as linhas de log do laço de autoafinação de 3 retries (ex: *Retry 1/3: Falha detectada...*, *Retry 2/3: Ajustando parâmetros...*, *Retry 3/3: Sucesso!*).
-- **SH2 [Design Responsivo e Estética Dark Mode]:** A interface deve adotar uma paleta de cores escura (Dark Mode por padrão), utilizando variáveis CSS para consistência visual, inspirada em ferramentas de terminal e IDEs modernas, adaptando-se fluidamente a telas de dispositivos móveis e desktops.
-- **SH3 [Indicadores de Status Dinâmicos]:** Elementos visuais (como badges ou LEDs virtuais) que mudam de cor (verde para sucesso, amarelo para em execução, vermelho para falha) com base no estado simulado do console de log.
+*   **M.1 - Arquivo Único e Autossuficiente:** A entrega deve consistir em um arquivo `index.html` na raiz do repositório, contendo todo o HTML, CSS e JavaScript necessários para renderização completa sem requisições de rede externas.
+*   **M.2 - Identificação do Repositório:** O cabeçalho da página deve exibir de forma destacada o título "Harness_teste - Status de Desenvolvimento" e conter um link funcional (tag `<a>`) apontando para o repositório ou painel do "Harness Central".
+*   **M.3 - Painel de Arquitetura Híbrida:** Exibir visualmente os três estágios (Stage 1, Stage 2 e Stage 3) com indicadores de status coloridos (ex: Verde para Ativo/Sucesso, Azul para Executando, Cinza para Aguardando).
+*   **M.4 - Matriz MoSCoW Estática:** Apresentar uma tabela ou grid contendo a distribuição de requisitos do projeto dividida em colunas/linhas para "MUST HAVE", "SHOULD HAVE" e "COULD HAVE", com seus respectivos estados de conclusão (ex: Concluído, Em Progresso, Pendente).
+*   **M.5 - Responsividade Vanilla:** A página deve se adaptar perfeitamente a resoluções mobile (mínimo 320px de largura) e desktop (até 1920px) utilizando apenas CSS Grid, Flexbox e Media Queries nativos.
 
----
+### 4.2 SHOULD HAVE (Desejável para maximização do Score)
 
-## 🔌 5. Contratos de Interface e Comportamento (Contract Boundaries)
-
-### 5.1 Estrutura Semântica do DOM
-A página deve seguir uma estrutura semântica rigorosa para garantir acessibilidade e clareza de leitura de máquina:
-- `<header>`: Contendo o título principal, metadados do repositório e o link externo.
-- `<main>`: Grid principal contendo as seções de status da arquitetura, métricas MoSCoW e o
+*   **S.1 - Console de Log Interativo (Simulador):** A página deve conter uma seção estilizada como terminal de linha de comando (fundo escuro, fonte monoespaçada) que simule a execução do laço de autoafinação de 3 retries do Harness.
+    *   *Comportamento esperado:* Ao carregar a página (ou disparar via botão "Simular"), o console deve imprimir sequencialmente, com pequenos atrasos de tempo (ex: 500ms), linhas de log simulando:
+        1.  Início da validação local (Stage 3).
+        2.  Falha simulada no Retry 1 (ex: "Erro de asserção no teste de regressão").
+        3.  Ajuste automático e execução do Retry 2.
+        4.  Sucesso no Retry 3 (ex: "100% dos requisitos MUST HAVE validados. Build elegível para merge!").
+*   **S.2 - Controles do Console:** Disponibilizar botões interativos ("Iniciar Simulação", "Pausar", "Limpar Console") para que o usuário possa controlar a animação do terminal de logs.
+*   **S.3 - Estética Dark Mode Nativa:** A interface deve adotar por padrão uma paleta
