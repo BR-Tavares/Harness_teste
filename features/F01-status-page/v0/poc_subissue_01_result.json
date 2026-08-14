@@ -1,8 +1,7 @@
 {
   "feature": "F01",
-  "slug": "status-page",
+  "subissue": "01",
   "version": "v0",
-  "spec_compiler_provenance": "Google Gemini 3.1 Pro (gemini-3.1-pro-preview)",
   "champion_attempt": {
     "attempt": 3,
     "must_passed": 4,
@@ -11,7 +10,7 @@
     "should_total": 4,
     "total_score": 52,
     "status": "MAXIMAL_PERFECTION",
-    "action": "100% MUST HAVE e 100% SHOULD HAVE atingidos. Score máximo consolidado (52.0 pts)."
+    "feedback": "100% MUST e 100% SHOULD atingidos. Score Máximo."
   },
   "attempts_history": [
     {
@@ -22,7 +21,7 @@
       "should_total": 4,
       "total_score": 36,
       "status": "FAILED",
-      "action": "Implementação base renderizada. Disparando refinamento de microinterações para o Retry 2."
+      "feedback": "Implementação base. Disparando refinamento de CSS no Retry 2."
     },
     {
       "attempt": 2,
@@ -32,7 +31,7 @@
       "should_total": 4,
       "total_score": 49,
       "status": "QUALIFIED",
-      "action": "Variáveis CSS e grid responsivo validados. Disparando otimização do laço de retries no console para o Retry 3."
+      "feedback": "Contratos MUST atingidos. Otimizando microinterações no Retry 3."
     },
     {
       "attempt": 3,
@@ -42,7 +41,7 @@
       "should_total": 4,
       "total_score": 52,
       "status": "MAXIMAL_PERFECTION",
-      "action": "100% MUST HAVE e 100% SHOULD HAVE atingidos. Score máximo consolidado (52.0 pts)."
+      "feedback": "100% MUST e 100% SHOULD atingidos. Score Máximo."
     }
   ],
   "static_checks": {
@@ -56,6 +55,5 @@
     "sh03_three_retries_sim": true,
     "sh04_dark_mode_css_vars": true
   },
-  "audit_timestamp": "2026-08-14T04:32:28Z",
-  "status": "PASSED_AND_CERTIFIED"
+  "timestamp": "2026-08-14T04:38:28Z"
 }

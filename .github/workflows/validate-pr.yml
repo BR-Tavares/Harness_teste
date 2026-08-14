@@ -1,0 +1,10 @@
+name: Stage 4 Validation Agent
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  audit-pr:
+    name: Call Stage 4 Validation Agent
+    uses: BR-Tavares/Replicable_Harness_spec_gh-aw/.github/workflows/reusable-stage4-validation.yml@main
