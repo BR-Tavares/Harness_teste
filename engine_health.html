@@ -16,12 +16,13 @@
     margin: 0; padding: 2rem 1.25rem; background: var(--bg); color: var(--text);
     font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
   }
-  .container { max-width: 900px; margin: 0 auto; }
+  .container { max-width: 960px; margin: 0 auto; }
   h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.05rem; margin: 2.5rem 0 0.75rem; color: var(--text); }
   .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
   .summary {
     display: inline-block; padding: 0.5rem 1rem; border-radius: 6px;
-    font-weight: 600; margin-bottom: 1.5rem; border: 1px solid var(--border);
+    font-weight: 600; margin-bottom: 0.5rem; border: 1px solid var(--border);
   }
   .summary.ok { background: rgba(63,185,80,0.15); color: var(--ok); }
   .summary.partial { background: rgba(210,153,34,0.15); color: var(--partial); }
@@ -37,13 +38,16 @@
   .badge-ok { background: rgba(63,185,80,0.15); color: var(--ok); }
   .badge-fail { background: rgba(248,81,73,0.15); color: var(--fail); }
   .badge-nokey { background: rgba(210,153,34,0.15); color: var(--nokey); }
-  footer { margin-top: 1.5rem; color: var(--muted); font-size: 0.78rem; }
+  .empty { color: var(--muted); font-size: 0.85rem; font-style: italic; }
+  footer { margin-top: 2rem; color: var(--muted); font-size: 0.78rem; }
 </style>
 </head>
 <body>
   <div class="container">
-    <h1>🩺 Replicable Harness — Engine Health Check</h1>
-    <p class="subtitle">Teste determinístico de disponibilidade dos 3 engines de IA suportados pelo Stage 1/2 Spec Compiler.</p>
+    <h1>🩺 Replicable Harness — Monitoramento do Método</h1>
+    <p class="subtitle">Disponibilidade dos engines de IA e proveniência das especificações já compiladas por eles.</p>
+
+    <h2>⚙️ Disponibilidade dos Engines</h2>
     <div class="summary ok">3 / 3 engines operacionais</div>
     <table>
       <thead>
@@ -54,26 +58,51 @@
           <td class="engine-name">Google Gemini 3.1 Pro</td>
           <td><span class="badge badge-ok">OK</span></td>
           <td class="mono">gemini-3.1-pro-preview</td>
-          <td class="mono">3454.9 ms</td>
+          <td class="mono">2747.0 ms</td>
           <td class="detail">OK</td>
         </tr>
         <tr>
           <td class="engine-name">Anthropic Claude Haiku</td>
           <td><span class="badge badge-ok">OK</span></td>
           <td class="mono">claude-haiku-4-5-20251001</td>
-          <td class="mono">1592.4 ms</td>
+          <td class="mono">1401.2 ms</td>
           <td class="detail">OK</td>
         </tr>
         <tr>
           <td class="engine-name">NVIDIA Nemotron 3 Ultra (OpenRouter)</td>
           <td><span class="badge badge-ok">OK</span></td>
           <td class="mono">nvidia/nemotron-3-ultra-550b-a55b</td>
-          <td class="mono">1058.5 ms</td>
+          <td class="mono">4047.1 ms</td>
           <td class="detail">OK</td>
         </tr>
       </tbody>
     </table>
-    <footer>Gerado deterministicamente por <code>scripts/engine_healthcheck.py</code> em 2026-08-14T13:44:07Z — nenhuma IA participou da montagem desta página.</footer>
+
+    <h2>📄 Especificações Compiladas (Provenance)</h2>
+    
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>Compilador</th><th>Modelo</th><th>Compilado em</th><th>Arquivo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="engine-name">F01-status-page <span class="mono">(v0)</span></td>
+          <td class="mono">Anthropic Claude Haiku (claude-haiku-4-5-20251001)</td>
+          <td class="mono">claude-haiku-4-5-20251001</td>
+          <td class="mono">2026-08-14T13:09:38Z</td>
+          <td class="detail">features/F01-status-page/v0/spec_v0.md</td>
+        </tr>
+        <tr>
+          <td class="engine-name">F02-status-page <span class="mono">(v0)</span></td>
+          <td class="mono">Google Gemini 3.1 Pro (gemini-3.1-pro-preview)</td>
+          <td class="mono">gemini-3.1-pro-preview</td>
+          <td class="mono">2026-08-14T13:11:33Z</td>
+          <td class="detail">features/F02-status-page/v0/spec_v0.md</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <footer>Gerado deterministicamente por <code>scripts/engine_healthcheck.py</code> em 2026-08-14T13:53:45Z — nenhuma IA participou da montagem desta página.</footer>
   </div>
 </body>
 </html>

@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-08-14T13:44:07Z",
+  "timestamp": "2026-08-14T13:53:45Z",
   "results": [
     {
       "engine": "Google Gemini 3.1 Pro",
       "status": "OK",
       "model": "gemini-3.1-pro-preview",
-      "latency_ms": 3454.9,
+      "latency_ms": 2747.0,
       "response_preview": "OK",
       "error": null
     },
@@ -13,7 +13,7 @@
       "engine": "Anthropic Claude Haiku",
       "status": "OK",
       "model": "claude-haiku-4-5-20251001",
-      "latency_ms": 1592.4,
+      "latency_ms": 1401.2,
       "response_preview": "OK",
       "error": null
     },
@@ -21,9 +21,27 @@
       "engine": "NVIDIA Nemotron 3 Ultra (OpenRouter)",
       "status": "OK",
       "model": "nvidia/nemotron-3-ultra-550b-a55b",
-      "latency_ms": 1058.5,
+      "latency_ms": 4047.1,
       "response_preview": "OK",
       "error": null
+    }
+  ],
+  "specs": [
+    {
+      "feature": "F01-status-page",
+      "version": "v0",
+      "path": "features/F01-status-page/v0/spec_v0.md",
+      "compiler": "Anthropic Claude Haiku (claude-haiku-4-5-20251001)",
+      "model": "claude-haiku-4-5-20251001",
+      "timestamp": "2026-08-14T13:09:38Z"
+    },
+    {
+      "feature": "F02-status-page",
+      "version": "v0",
+      "path": "features/F02-status-page/v0/spec_v0.md",
+      "compiler": "Google Gemini 3.1 Pro (gemini-3.1-pro-preview)",
+      "model": "gemini-3.1-pro-preview",
+      "timestamp": "2026-08-14T13:11:33Z"
     }
   ]
 }
