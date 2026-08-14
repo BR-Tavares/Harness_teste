@@ -1,0 +1,25 @@
+name: Invoke Replicable Harness v6
+
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+    inputs:
+      feature_id:
+        description: "ID da Feature (ex: F01)"
+        required: true
+        default: "F01"
+      version:
+        description: "Versao de maturidade (ex: v0, v1)"
+        required: true
+        default: "v0"
+
+jobs:
+  run-spec-and-plan:
+    name: Call Central Harness Spec Engine
+    uses: BR-Tavares/Replicable_Harness_spec_gh-aw/.github/workflows/reusable-harness.lock.yml@main
+    with:
+      feature_id: ${{ inputs.feature_id || github.event.issue.number }}
+      version: ${{ inputs.version || 'v0' }}
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
