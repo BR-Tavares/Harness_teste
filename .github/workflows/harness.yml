@@ -13,6 +13,15 @@ on:
         description: "Versao de maturidade (ex: v0, v1)"
         required: true
         default: "v0"
+      engine:
+        description: "Opcao de modelo: 'haiku' (Claude 3.5 Haiku), 'gemini-pro' (Gemini 3.1 Pro), ou 'auto'"
+        required: true
+        default: "haiku"
+        type: choice
+        options:
+          - haiku
+          - gemini-pro
+          - auto
 
 permissions:
   contents: write
@@ -26,4 +35,5 @@ jobs:
     with:
       feature_id: ${{ inputs.feature_id || 'F01' }}
       version: ${{ inputs.version || 'v0' }}
+      engine: ${{ inputs.engine || 'auto' }}
     secrets: inherit
