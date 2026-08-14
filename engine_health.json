@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-08-14T13:44:07Z",
+  "results": [
+    {
+      "engine": "Google Gemini 3.1 Pro",
+      "status": "OK",
+      "model": "gemini-3.1-pro-preview",
+      "latency_ms": 3454.9,
+      "response_preview": "OK",
+      "error": null
+    },
+    {
+      "engine": "Anthropic Claude Haiku",
+      "status": "OK",
+      "model": "claude-haiku-4-5-20251001",
+      "latency_ms": 1592.4,
+      "response_preview": "OK",
+      "error": null
+    },
+    {
+      "engine": "NVIDIA Nemotron 3 Ultra (OpenRouter)",
+      "status": "OK",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "latency_ms": 1058.5,
+      "response_preview": "OK",
+      "error": null
+    }
+  ]
+}

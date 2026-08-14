@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Replicable Harness — Engine Health Check</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e;
+    --ok: #3fb950; --fail: #f85149; --nokey: #d29922; --partial: #d29922;
+    --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2rem 1.25rem; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .summary {
+    display: inline-block; padding: 0.5rem 1rem; border-radius: 6px;
+    font-weight: 600; margin-bottom: 1.5rem; border: 1px solid var(--border);
+  }
+  .summary.ok { background: rgba(63,185,80,0.15); color: var(--ok); }
+  .summary.partial { background: rgba(210,153,34,0.15); color: var(--partial); }
+  .summary.fail { background: rgba(248,81,73,0.15); color: var(--fail); }
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  tr:last-child td { border-bottom: none; }
+  .engine-name { font-weight: 600; }
+  .mono { font-family: "SF Mono", Consolas, monospace; font-size: 0.8rem; color: var(--muted); }
+  .detail { font-family: "SF Mono", Consolas, monospace; font-size: 0.78rem; color: var(--muted); max-width: 260px; overflow-wrap: break-word; }
+  .badge { padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em; }
+  .badge-ok { background: rgba(63,185,80,0.15); color: var(--ok); }
+  .badge-fail { background: rgba(248,81,73,0.15); color: var(--fail); }
+  .badge-nokey { background: rgba(210,153,34,0.15); color: var(--nokey); }
+  footer { margin-top: 1.5rem; color: var(--muted); font-size: 0.78rem; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>🩺 Replicable Harness — Engine Health Check</h1>
+    <p class="subtitle">Teste determinístico de disponibilidade dos 3 engines de IA suportados pelo Stage 1/2 Spec Compiler.</p>
+    <div class="summary ok">3 / 3 engines operacionais</div>
+    <table>
+      <thead>
+        <tr><th>Engine</th><th>Status</th><th>Modelo</th><th>Latência</th><th>Detalhe / Erro</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="engine-name">Google Gemini 3.1 Pro</td>
+          <td><span class="badge badge-ok">OK</span></td>
+          <td class="mono">gemini-3.1-pro-preview</td>
+          <td class="mono">3454.9 ms</td>
+          <td class="detail">OK</td>
+        </tr>
+        <tr>
+          <td class="engine-name">Anthropic Claude Haiku</td>
+          <td><span class="badge badge-ok">OK</span></td>
+          <td class="mono">claude-haiku-4-5-20251001</td>
+          <td class="mono">1592.4 ms</td>
+          <td class="detail">OK</td>
+        </tr>
+        <tr>
+          <td class="engine-name">NVIDIA Nemotron 3 Ultra (OpenRouter)</td>
+          <td><span class="badge badge-ok">OK</span></td>
+          <td class="mono">nvidia/nemotron-3-ultra-550b-a55b</td>
+          <td class="mono">1058.5 ms</td>
+          <td class="detail">OK</td>
+        </tr>
+      </tbody>
+    </table>
+    <footer>Gerado deterministicamente por <code>scripts/engine_healthcheck.py</code> em 2026-08-14T13:44:07Z — nenhuma IA participou da montagem desta página.</footer>
+  </div>
+</body>
+</html>
